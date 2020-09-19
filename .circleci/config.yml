@@ -18,6 +18,15 @@ jobs:
     steps:
       - run: echo world
 
+  test_env_var:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: "echo an env var that is part of our project"
+          command: |
+            echo $NAME # this env var must be swt within the project
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
@@ -28,3 +37,4 @@ workflows:
       - print_world:
           requires:
             - print_hello
+      - test_env_var
