@@ -21,12 +21,12 @@ jobs:
   test_env_var:
     docker:
       - image: cimg/base:2020.01
+    environment:
+      NAME: Olamide
     steps:
       - checkout
       - run:
-          name: "echo an env var that is part of our project"
-          command: |
-            echo $NAME # this env var must be swt within the project
+          echo $NAME
 # Orchestrate or schedule a set of jobs
 workflows:
   # Name the workflow "welcome"
